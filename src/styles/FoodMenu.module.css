@@ -1,0 +1,126 @@
+/* FoodMenu.module.css */
+.overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding: 0 12px 28px;
+  animation: fade-in 0.2s ease;
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.menu {
+  background: rgba(255,255,255,0.96);
+  border-radius: 28px 28px 20px 20px;
+  padding: 24px 20px 20px;
+  width: 100%; max-width: 500px;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.2);
+  animation: slide-up-menu 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes slide-up-menu {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--clr-text);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.foodBtn {
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+  padding: 14px 8px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--food-color) 12%, white), color-mix(in srgb, var(--food-color) 5%, white));
+  border: 2.5px solid color-mix(in srgb, var(--food-color) 30%, transparent);
+  border-radius: 18px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--clr-text);
+  transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+}
+.foodBtn:hover {
+  transform: translateY(-5px) scale(1.06);
+  border-color: var(--food-color);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--food-color) 30%, transparent);
+}
+.foodBtn:active { transform: scale(0.95); }
+
+.fav {
+  border-width: 3px;
+  border-color: #E91E63;
+  box-shadow: 0 0 0 3px rgba(233,30,99,0.15);
+}
+
+.medicine {
+  background: linear-gradient(135deg, #f3e5f5, #ede7f6);
+  border-color: #9C27B0;
+}
+
+.foodEmoji { font-size: 36px; }
+.foodLabel { font-size: 0.78rem; font-weight: 700; }
+
+.favBadge {
+  font-size: 0.62rem; font-weight: 800;
+  background: #E91E63; color: white;
+  border-radius: 99px; padding: 2px 7px;
+  position: absolute; top: -8px; right: -4px;
+}
+.medBadge {
+  font-size: 0.6rem; font-weight: 700;
+  background: #9C27B0; color: white;
+  border-radius: 99px; padding: 2px 6px;
+  position: absolute; top: -8px; right: -4px;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%; transform: translateX(-50%);
+  background: #1e1e2e;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 160px;
+  z-index: 10;
+  pointer-events: none;
+  animation: fade-in 0.15s ease;
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%; transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: #1e1e2e;
+}
+.tooltipDesc { font-size: 0.75rem; margin-bottom: 7px; opacity: 0.85; line-height: 1.4; }
+.tooltipStats { display: flex; flex-wrap: wrap; gap: 5px; font-size: 0.72rem; font-weight: 700; }
+.tooltipStats span { background: rgba(255,255,255,0.12); padding: 2px 7px; border-radius: 99px; }
+
+.closeBtn {
+  width: 100%;
+  padding: 12px;
+  background: #f5f5f5;
+  border: 2px solid #e0e0e0;
+  border-radius: 14px;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.closeBtn:hover { background: #eee; color: #666; }
